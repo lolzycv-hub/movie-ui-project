@@ -3,114 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Contact | CinemaHub</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="bg-black text-white">
 
   <!-- Navbar -->
   <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50">
-
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
-
-      <a href="index.html" class="flex items-center gap-3">
-
-        <img
-          src="images/cinemahub-logo.png"
-          class="w-12 h-12 rounded-full"
-        >
-
-        <h1 class="text-3xl font-bold">
-          Cinema<span class="text-red-600">Hub</span>
-        </h1>
-
+    <div class="flex justify-between items-center px-4 py-3 md:px-6 md:py-4">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/cinemahub-logo.png" class="w-9 h-9 md:w-12 md:h-12 rounded-full">
+        <span class="text-xl md:text-3xl font-bold">Cinema<span class="text-red-600">Hub</span></span>
       </a>
-
-      <ul class="hidden md:flex gap-8 text-lg">
-
-        <li>
-          <a href="index.html" class="text-red-500">
-            Home
-          </a>
-        </li>
-
-        <li>
-          <a href="movies.html" class="hover:text-red-500 transition">
-            Movies
-          </a>
-        </li>
-
-        <li>
-          <a href="series.html" class="hover:text-red-500 transition">
-            Series
-          </a>
-        </li>
-
-        <li>
-          <a href="trending.html" class="hover:text-red-500 transition">
-            Trending
-          </a>
-        </li>
-
-        <li>
-          <a href="contact.html" class="hover:text-red-500 transition">
-            Contact
-          </a>
-        </li>
-
+      <ul class="hidden md:flex gap-6 lg:gap-8 text-base lg:text-lg">
+        <li><a href="index.html" class="hover:text-red-500 transition">Home</a></li>
+        <li><a href="movies.html" class="hover:text-red-500 transition">Movies</a></li>
+        <li><a href="series.html" class="hover:text-red-500 transition">Series</a></li>
+        <li><a href="trending.html" class="hover:text-red-500 transition">Trending</a></li>
+        <li><a href="contact.html" class="text-red-500">Contact</a></li>
       </ul>
-
+      <button class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()">
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+      </button>
     </div>
-
+    <div id="mobile-menu" class="hidden md:hidden bg-black/95 px-4 pb-4">
+      <ul class="flex flex-col gap-1 text-base">
+        <li><a href="index.html" class="block py-2 hover:text-red-500 transition">Home</a></li>
+        <li><a href="movies.html" class="block py-2 hover:text-red-500 transition">Movies</a></li>
+        <li><a href="series.html" class="block py-2 hover:text-red-500 transition">Series</a></li>
+        <li><a href="trending.html" class="block py-2 hover:text-red-500 transition">Trending</a></li>
+        <li><a href="contact.html" class="block py-2 text-red-500">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Contact Form -->
-  <section class="min-h-screen flex items-center justify-center px-6 py-20">
+  <section class="min-h-screen flex items-center justify-center px-4 py-24 md:py-20">
+    <div class="bg-zinc-900 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-lg md:max-w-2xl">
 
-    <div class="bg-zinc-900 p-10 rounded-3xl shadow-2xl w-full max-w-2xl">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2 md:mb-4">Contact Us</h2>
+      <p class="text-gray-400 text-xs sm:text-sm md:text-base text-center mb-6 md:mb-10">Have questions? Send us a message.</p>
 
-      <h2 class="text-5xl font-bold text-center mb-4">
-        Contact Us
-      </h2>
-
-      <p class="text-gray-400 text-center mb-10">
-        Have questions? Send us a message.
-      </p>
-
-      <form class="space-y-6">
-
+      <form class="space-y-4 md:space-y-6">
         <input
           type="text"
           placeholder="Your Name"
-          class="w-full p-4 rounded-xl bg-zinc-800 border border-gray-700 focus:outline-none focus:border-red-500"
+          class="w-full p-3 md:p-4 text-sm md:text-base rounded-xl bg-zinc-800 border border-gray-700 focus:outline-none focus:border-red-500"
         >
-
         <input
           type="email"
           placeholder="Your Email"
-          class="w-full p-4 rounded-xl bg-zinc-800 border border-gray-700 focus:outline-none focus:border-red-500"
+          class="w-full p-3 md:p-4 text-sm md:text-base rounded-xl bg-zinc-800 border border-gray-700 focus:outline-none focus:border-red-500"
         >
-
         <textarea
-          rows="6"
+          rows="5"
           placeholder="Your Message"
-          class="w-full p-4 rounded-xl bg-zinc-800 border border-gray-700 focus:outline-none focus:border-red-500"
+          class="w-full p-3 md:p-4 text-sm md:text-base rounded-xl bg-zinc-800 border border-gray-700 focus:outline-none focus:border-red-500"
         ></textarea>
-
         <button
-          class="w-full bg-red-600 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition"
+          class="w-full bg-red-600 py-3 md:py-4 rounded-xl text-sm md:text-lg font-bold hover:bg-red-700 transition"
         >
           Send Message
         </button>
-
       </form>
 
     </div>
-
   </section>
 
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+  </script>
 </body>
 </html>
