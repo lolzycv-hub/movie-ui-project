@@ -3,207 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Movie Detail | CinemaHub</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="bg-black text-white">
 
   <!-- Navbar -->
   <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50">
-
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
-
-      <a href="index.html" class="flex items-center gap-3">
-
-        <img
-          src="images/cinemahub-logo.png"
-          class="w-12 h-12 rounded-full"
-        >
-
-        <h1 class="text-3xl font-bold">
-          Cinema<span class="text-red-600">Hub</span>
-        </h1>
-
+    <div class="flex justify-between items-center px-4 py-3 md:px-6 md:py-4">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/cinemahub-logo.png" class="w-9 h-9 md:w-12 md:h-12 rounded-full">
+        <span class="text-xl md:text-3xl font-bold">Cinema<span class="text-red-600">Hub</span></span>
       </a>
-
-      <ul class="hidden md:flex gap-8 text-lg">
-
-        <li>
-          <a href="index.html" class="text-red-500">
-            Home
-          </a>
-        </li>
-
-        <li>
-          <a href="movies.html" class="hover:text-red-500 transition">
-            Movies
-          </a>
-        </li>
-
-        <li>
-          <a href="series.html" class="hover:text-red-500 transition">
-            Series
-          </a>
-        </li>
-
-        <li>
-          <a href="trending.html" class="hover:text-red-500 transition">
-            Trending
-          </a>
-        </li>
-
-        <li>
-          <a href="contact.html" class="hover:text-red-500 transition">
-            Contact
-          </a>
-        </li>
-
-      </ul>
-
-      <!-- Hamburger Button (mobile only) -->
-      <button
-        id="menu-btn"
-        class="md:hidden flex flex-col gap-1.5 p-2"
-        onclick="toggleMenu()"
-      >
-        <span class="block w-6 h-0.5 bg-white"></span>
-        <span class="block w-6 h-0.5 bg-white"></span>
-        <span class="block w-6 h-0.5 bg-white"></span>
-      </button>
-
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-black/95 px-6 py-4">
-      <ul class="flex flex-col gap-4 text-lg">
+      <ul class="hidden md:flex gap-6 lg:gap-8 text-base lg:text-lg">
         <li><a href="index.html" class="text-red-500">Home</a></li>
         <li><a href="movies.html" class="hover:text-red-500 transition">Movies</a></li>
         <li><a href="series.html" class="hover:text-red-500 transition">Series</a></li>
         <li><a href="trending.html" class="hover:text-red-500 transition">Trending</a></li>
         <li><a href="contact.html" class="hover:text-red-500 transition">Contact</a></li>
       </ul>
+      <button class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()">
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+      </button>
     </div>
-
+    <div id="mobile-menu" class="hidden md:hidden bg-black/95 px-4 pb-4">
+      <ul class="flex flex-col gap-1 text-base">
+        <li><a href="index.html" class="block py-2 text-red-500">Home</a></li>
+        <li><a href="movies.html" class="block py-2 hover:text-red-500 transition">Movies</a></li>
+        <li><a href="series.html" class="block py-2 hover:text-red-500 transition">Series</a></li>
+        <li><a href="trending.html" class="block py-2 hover:text-red-500 transition">Trending</a></li>
+        <li><a href="contact.html" class="block py-2 hover:text-red-500 transition">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-  </script>
-
   <!-- Detail -->
-  <section class="pt-32 px-6 pb-20">
+  <section class="pt-20 md:pt-32 px-4 sm:px-6 pb-16 md:pb-20">
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-start md:items-center">
 
-    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <!-- Poster -->
+      <img src="images/1.jpg" class="rounded-xl md:rounded-2xl shadow-2xl w-full max-w-sm mx-auto md:max-w-none">
 
-      <img
-        src="images/1.jpg"
-        class="rounded-2xl shadow-2xl"
-      >
-
-      <div>
-
-        <h1 class="text-6xl font-bold mb-6">
+      <!-- Info -->
+      <div class="mt-2 md:mt-0">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6">
           Stranger Things
         </h1>
-
-        <p class="text-gray-300 text-lg leading-8 mb-8">
+        <p class="text-gray-300 text-sm sm:text-base md:text-lg leading-6 sm:leading-7 md:leading-8 mb-6 md:mb-8">
           Stranger Things is a science fiction horror drama television series
           created for Netflix. The story follows mysterious supernatural events
           in a small town.
         </p>
-
-        <div class="flex gap-4">
-
-          <button
-            class="bg-red-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition"
-          >
+        <div class="flex flex-wrap gap-2 md:gap-4">
+          <button class="bg-red-600 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-lg font-bold hover:bg-red-700 transition">
             ▶ Watch Now
           </button>
-
-          <!-- Modal Button -->
-          <button
-            onclick="openModal()"
-            class="bg-zinc-700 px-8 py-4 rounded-xl text-lg hover:bg-zinc-600 transition"
-          >
+          <button onclick="openModal()"
+            class="bg-zinc-700 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-lg hover:bg-zinc-600 transition">
             Trailer
           </button>
-
-          <a
-            href="index.html"
-            class="bg-zinc-800 px-8 py-4 rounded-xl text-lg hover:bg-zinc-700 transition"
-          >
+          <a href="index.html"
+            class="bg-zinc-800 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-lg hover:bg-zinc-700 transition">
             ← Back
           </a>
-
         </div>
-
       </div>
 
     </div>
-
   </section>
 
   <!-- Modal -->
-  <div
-    id="modal"
-    class="fixed inset-0 bg-black/80 hidden justify-center items-center z-50"
-  >
-
-    <div class="bg-zinc-900 p-8 rounded-2xl w-[90%] max-w-3xl relative">
-
-      <!-- Close Button -->
-      <button
-        onclick="closeModal()"
-        class="absolute top-3 right-4 text-4xl"
-      >
-        ×
-      </button>
-
-      <h2 class="text-3xl font-bold mb-6">
-        Movie Trailer
-      </h2>
-
-      <!-- Trailer Video -->
+  <div id="modal" class="fixed inset-0 bg-black/80 hidden justify-center items-center z-50 px-4">
+    <div class="bg-zinc-900 p-5 sm:p-6 md:p-8 rounded-xl md:rounded-2xl w-full max-w-xs sm:max-w-lg md:max-w-3xl relative">
+      <button onclick="closeModal()" class="absolute top-3 right-4 text-2xl md:text-4xl">×</button>
+      <h2 class="text-lg sm:text-xl md:text-3xl font-bold mb-4 md:mb-6">Movie Trailer</h2>
       <div class="aspect-video">
-
-        <iframe
-          class="w-full h-full rounded-xl"
-          src="https://www.youtube.com/embed/b9EkMc79ZSU"
-          allowfullscreen
-        ></iframe>
-
+        <iframe class="w-full h-full rounded-lg md:rounded-xl"
+          src="https://www.youtube.com/embed/b9EkMc79ZSU" allowfullscreen></iframe>
       </div>
-
     </div>
-
   </div>
 
-  <!-- Modal Script -->
   <script>
-
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
     function openModal() {
-
-      document.getElementById("modal").classList.remove("hidden");
-
-      document.getElementById("modal").classList.add("flex");
-
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal').classList.add('flex');
     }
-
     function closeModal() {
-
-      document.getElementById("modal").classList.add("hidden");
-
-      document.getElementById("modal").classList.remove("flex");
-
+      document.getElementById('modal').classList.add('hidden');
+      document.getElementById('modal').classList.remove('flex');
     }
-
   </script>
-
 </body>
 </html>
