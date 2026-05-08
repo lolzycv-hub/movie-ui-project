@@ -43,19 +43,13 @@
   <section class="pt-20 md:pt-32 px-4 sm:px-6 pb-16 md:pb-20">
     <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-start md:items-center">
 
-      <!-- Poster -->
-      <img src="images/1.jpg" class="rounded-xl md:rounded-2xl shadow-2xl w-full max-w-sm mx-auto md:max-w-none">
+      <img id="movie-poster" src="" alt=""
+        class="rounded-xl md:rounded-2xl shadow-2xl w-full max-w-sm mx-auto md:max-w-none">
 
-      <!-- Info -->
       <div class="mt-2 md:mt-0">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6">
-          Stranger Things
-        </h1>
-        <p class="text-gray-300 text-sm sm:text-base md:text-lg leading-6 sm:leading-7 md:leading-8 mb-6 md:mb-8">
-          Stranger Things is a science fiction horror drama television series
-          created for Netflix. The story follows mysterious supernatural events
-          in a small town.
-        </p>
+        <h1 id="movie-title" class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6"></h1>
+        <div id="movie-badges" class="flex flex-wrap gap-2 mb-4"></div>
+        <p id="movie-desc" class="text-gray-300 text-sm sm:text-base md:text-lg leading-6 sm:leading-7 md:leading-8 mb-6 md:mb-8"></p>
         <div class="flex flex-wrap gap-2 md:gap-4">
           <button class="bg-red-600 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-lg font-bold hover:bg-red-700 transition">
             ▶ Watch Now
@@ -64,7 +58,7 @@
             class="bg-zinc-700 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-lg hover:bg-zinc-600 transition">
             Trailer
           </button>
-          <a href="index.html"
+          <a id="back-btn" href="index.html"
             class="bg-zinc-800 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl text-sm md:text-lg hover:bg-zinc-700 transition">
             ← Back
           </a>
@@ -80,23 +74,90 @@
       <button onclick="closeModal()" class="absolute top-3 right-4 text-2xl md:text-4xl">×</button>
       <h2 class="text-lg sm:text-xl md:text-3xl font-bold mb-4 md:mb-6">Movie Trailer</h2>
       <div class="aspect-video">
-        <iframe class="w-full h-full rounded-lg md:rounded-xl"
-          src="https://www.youtube.com/embed/b9EkMc79ZSU" allowfullscreen></iframe>
+        <iframe id="trailer-frame" class="w-full h-full rounded-lg md:rounded-xl"
+          src="" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
+    // ── ฐานข้อมูลหนัง ──────────────────────────────────────────
+    const movies = {
+      1:  { title: "Stranger Things",         img: "images/1.jpg",   genre: ["Sci-Fi","Horror"],     year: 2016, desc: "Stranger Things is a science fiction horror drama television series created for Netflix. The story follows mysterious supernatural events in a small town of Hawkins, Indiana.",          trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "index.html" },
+      2:  { title: "Wednesday",               img: "images/2.jpg",   genre: ["Mystery","Comedy"],    year: 2022, desc: "Wednesday follows Wednesday Addams as she attends Nevermore Academy — a school for outcasts. She investigates a monster killing spree while unraveling a mystery involving her parents.",  trailer: "https://www.youtube.com/embed/Di310WS8zLk", back: "index.html" },
+      3:  { title: "Avatar",                  img: "images/20.jpg",  genre: ["Action","Sci-Fi"],     year: 2009, desc: "A paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting the alien world he feels is his home.",                  trailer: "https://www.youtube.com/embed/5PSNL1qE6VY", back: "index.html" },
+      4:  { title: "Batman",                  img: "images/22.jpg",  genre: ["Action","Crime"],      year: 2022, desc: "When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question his family's involvement.",        trailer: "https://www.youtube.com/embed/mqqft2x_Aa4", back: "index.html" },
+      5:  { title: "Avengers: Endgame",       img: "images/21.jpg",  genre: ["Action","Superhero"],  year: 2019, desc: "After the devastating events of Infinity War, the universe is in ruins. The Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.",                   trailer: "https://www.youtube.com/embed/TcMBFSGVi1c", back: "index.html" },
+      6:  { title: "Deadpool",                img: "images/23.jpg",  genre: ["Action","Comedy"],     year: 2016, desc: "A wisecracking mercenary gets experimented on and becomes immortal but ugly, and now must hunt down the man who ruined his looks.",                                                          trailer: "https://www.youtube.com/embed/ONHBaC-pfsk", back: "trending.html" },
+      7:  { title: "Joker",                   img: "images/24.jpg",  genre: ["Crime","Drama"],       year: 2019, desc: "In Gotham City, mentally troubled comedian Arthur Fleck embarks on a downward spiral of revolution and bloody crime, transforming himself into the criminal mastermind known as Joker.",    trailer: "https://www.youtube.com/embed/zAGVQLHvwOY", back: "trending.html" },
+      8:  { title: "เจ้าสาวทรราช",           img: "images/17.jpg",  genre: ["Drama","Romance"],     year: 2023, desc: "ซีรีส์ดราม่าโรแมนติกที่เต็มไปด้วยความพลิกผัน เล่าเรื่องของหญิงสาวที่ต้องเผชิญกับชะตากรรมและความรักในโลกที่โหดร้าย",                                                                   trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ", back: "series.html" },
+      9:  { title: "สุขเล็กๆที่เรียกว่าเธอ", img: "images/18.jpg",  genre: ["Romance","Drama"],     year: 2023, desc: "ซีรีส์โรแมนติกที่ชวนให้หัวใจอบอุ่น เรื่องราวความรักเล็กๆ ที่งดงามและน่าประทับใจ ผ่านตัวละครที่มีเสน่ห์และน่าติดตาม",                                                                        trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ", back: "series.html" },
+      10: { title: "Loki",                    img: "https://picsum.photos/300/450?13", genre: ["Sci-Fi","Fantasy"], year: 2021, desc: "The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of Avengers: Endgame.",                              trailer: "https://www.youtube.com/embed/nW948Va-l10", back: "index.html" },
+      11: { title: "The Witcher",             img: "https://picsum.photos/300/450?14", genre: ["Fantasy","Action"], year: 2019, desc: "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.",                                   trailer: "https://www.youtube.com/embed/ndl7APaNhXk", back: "index.html" },
+      12: { title: "Iron Man",                img: "https://picsum.photos/300/450?15", genre: ["Action","Superhero"],year: 2008,desc: "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",                                      trailer: "https://www.youtube.com/embed/8hYlB38asDY", back: "index.html" },
+      13: { title: "John Wick",               img: "https://picsum.photos/300/450?16", genre: ["Action","Thriller"], year: 2014, desc: "An ex-hitman comes out of retirement to track down the gangsters that killed his dog, a gift from his recently deceased wife.",                                         trailer: "https://www.youtube.com/embed/2AUmvWm5ZDQ", back: "index.html" },
+      16: { title: "Movie 16",                img: "images/16.jpg",  genre: ["Action"],              year: 2023, desc: "An action-packed adventure that will keep you on the edge of your seat from start to finish.",                                                                                              trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      17: { title: "Movie 11",                img: "images/11.jpg",  genre: ["Drama"],               year: 2022, desc: "A gripping drama that explores the complexities of human relationships and the challenges of modern life.",                                                                                  trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      18: { title: "Movie 7",                 img: "images/7.jpg",   genre: ["Thriller"],            year: 2021, desc: "A heart-pounding thriller filled with unexpected twists and turns that will leave you breathless.",                                                                                          trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      19: { title: "Movie 8",                 img: "images/8.jpg",   genre: ["Comedy"],              year: 2023, desc: "A hilarious comedy that brings laughter and joy to audiences of all ages.",                                                                                                                   trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      20: { title: "Movie 9",                 img: "images/9.jpg",   genre: ["Horror"],              year: 2022, desc: "A terrifying horror film that will haunt your dreams long after the credits roll.",                                                                                                            trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      21: { title: "Movie 10",                img: "images/10.jpg",  genre: ["Romance"],             year: 2023, desc: "A beautiful love story that reminds us that true love can be found in the most unexpected places.",                                                                                           trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      22: { title: "Movie 12",                img: "images/12.jpg",  genre: ["Action"],              year: 2022, desc: "An explosive action film featuring breathtaking stunts and an unforgettable story.",                                                                                                          trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      23: { title: "Movie 13",                img: "images/13.jpg",  genre: ["Drama"],               year: 2021, desc: "A powerful drama that shines a light on important social issues through compelling storytelling.",                                                                                             trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      24: { title: "Movie 14",                img: "images/14.jpg",  genre: ["Sci-Fi"],              year: 2023, desc: "A visually stunning science fiction epic that pushes the boundaries of imagination.",                                                                                                          trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+      25: { title: "Movie 15",                img: "images/15.jpg",  genre: ["Mystery"],             year: 2022, desc: "A captivating mystery that keeps you guessing until the very last moment.",                                                                                                                    trailer: "https://www.youtube.com/embed/b9EkMc79ZSU", back: "movies.html" },
+    };
+
+    // ── โหลดข้อมูลจาก URL param ──────────────────────────────
+    function loadMovie() {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id")) || 1;
+      const movie = movies[id] || movies[1];
+
+      document.title = movie.title + " | CinemaHub";
+      document.getElementById("movie-poster").src = movie.img;
+      document.getElementById("movie-poster").alt = movie.title;
+      document.getElementById("movie-title").textContent = movie.title;
+      document.getElementById("movie-desc").textContent = movie.desc;
+      document.getElementById("trailer-frame").src = "";  // reset on load
+
+      // badges
+      const badgeContainer = document.getElementById("movie-badges");
+      badgeContainer.innerHTML = "";
+      movie.genre.forEach(g => {
+        const span = document.createElement("span");
+        span.className = "bg-zinc-700 text-xs sm:text-sm px-3 py-1 rounded-full";
+        span.textContent = g;
+        badgeContainer.appendChild(span);
+      });
+      const yearSpan = document.createElement("span");
+      yearSpan.className = "bg-red-600/30 text-red-400 text-xs sm:text-sm px-3 py-1 rounded-full";
+      yearSpan.textContent = movie.year;
+      badgeContainer.appendChild(yearSpan);
+
+      // back button
+      document.getElementById("back-btn").href = movie.back || "index.html";
+
+      // store trailer for modal
+      window._trailerUrl = movie.trailer;
     }
+
+    loadMovie();
+
+    // ── Modal ─────────────────────────────────────────────────
     function openModal() {
-      document.getElementById('modal').classList.remove('hidden');
-      document.getElementById('modal').classList.add('flex');
+      document.getElementById("trailer-frame").src = window._trailerUrl;
+      document.getElementById("modal").classList.remove("hidden");
+      document.getElementById("modal").classList.add("flex");
     }
     function closeModal() {
-      document.getElementById('modal').classList.add('hidden');
-      document.getElementById('modal').classList.remove('flex');
+      document.getElementById("trailer-frame").src = "";
+      document.getElementById("modal").classList.add("hidden");
+      document.getElementById("modal").classList.remove("flex");
+    }
+
+    function toggleMenu() {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
     }
   </script>
 </body>
