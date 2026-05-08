@@ -63,9 +63,38 @@
 
       </ul>
 
+      <!-- Hamburger Button (mobile only) -->
+      <button
+        id="menu-btn"
+        class="md:hidden flex flex-col gap-1.5 p-2"
+        onclick="toggleMenu()"
+      >
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-black/95 px-6 py-4">
+      <ul class="flex flex-col gap-4 text-lg">
+        <li><a href="index.html" class="text-red-500">Home</a></li>
+        <li><a href="movies.html" class="hover:text-red-500 transition">Movies</a></li>
+        <li><a href="series.html" class="hover:text-red-500 transition">Series</a></li>
+        <li><a href="trending.html" class="hover:text-red-500 transition">Trending</a></li>
+        <li><a href="contact.html" class="hover:text-red-500 transition">Contact</a></li>
+      </ul>
     </div>
 
   </nav>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
 
   <!-- Detail -->
   <section class="pt-32 px-6 pb-20">
