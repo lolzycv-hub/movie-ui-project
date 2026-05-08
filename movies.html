@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Movies | CinemaHub</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50">
+
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+
+      <a href="index.html" class="flex items-center gap-3">
+
+        <img
+          src="images/cinemahub-logo.png"
+          class="w-12 h-12 rounded-full"
+        >
+
+        <h1 class="text-3xl font-bold">
+          Cinema<span class="text-red-600">Hub</span>
+        </h1>
+
+      </a>
+
+      <ul class="hidden md:flex gap-8 text-lg">
+
+        <li>
+          <a href="index.html" class="text-red-500">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="movies.html" class="hover:text-red-500 transition">
+            Movies
+          </a>
+        </li>
+
+        <li>
+          <a href="series.html" class="hover:text-red-500 transition">
+            Series
+          </a>
+        </li>
+
+        <li>
+          <a href="trending.html" class="hover:text-red-500 transition">
+            Trending
+          </a>
+        </li>
+
+        <li>
+          <a href="contact.html" class="hover:text-red-500 transition">
+            Contact
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 px-6 pb-10 text-center">
+
+    <h1 class="text-5xl md:text-6xl font-bold mb-4">
+      Movies Collection
+    </h1>
+
+    <p class="text-gray-400 text-lg">
+      Explore trending movies and series
+    </p>
+
+  </section>
+
+  <!-- Movies Grid -->
+  <section class="px-6 pb-20">
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+      <a href="detail.html" class="hover:scale-105 transition">
+
+        <img
+          src="images/16.jpg"
+          class="rounded-xl shadow-lg"
+        >
+
+      </a>
+
+      <img src="images/11.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/7.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/8.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/9.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/10.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/12.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/13.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/14.jpg" class="rounded-xl hover:scale-105 transition">
+      <img src="images/15.jpg" class="rounded-xl hover:scale-105 transition">
+
+    </div>
+
+  </section>
+
+</body>
+</html>
